@@ -117,6 +117,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mostrarContactos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         mostrarContactos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cuaderno.png"))); // NOI18N
         mostrarContactos.setText("Mostrar contactos");
+        mostrarContactos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarContactosActionPerformed(evt);
+            }
+        });
         menu.add(mostrarContactos);
         menu.add(jSeparator1);
 
@@ -172,6 +177,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cajaCorreo.setText("");
         cajaCelular.setText("");
     }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void mostrarContactosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarContactosActionPerformed
+        VentanaContactos ventanaC = new VentanaContactos(this,true);
+        ventanaC.setVisible(true);
+    }//GEN-LAST:event_mostrarContactosActionPerformed
 
     /**
      * @param args the command line arguments
