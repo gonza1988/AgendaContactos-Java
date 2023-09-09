@@ -23,7 +23,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cajaCorreo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         cajaCelular = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        botonGuardar = new javax.swing.JButton();
         barraMenu = new javax.swing.JMenuBar();
         menu = new javax.swing.JMenu();
         mostrarContactos = new javax.swing.JMenuItem();
@@ -54,8 +54,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         cajaCelular.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jButton1.setText("Guardar contacto");
+        botonGuardar.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        botonGuardar.setText("Guardar contacto");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -81,7 +86,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                 .addGap(0, 273, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(botonGuardar)
                 .addGap(249, 249, 249))
         );
         panelLayout.setVerticalGroup(
@@ -102,7 +107,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(cajaCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(botonGuardar)
                 .addGap(23, 23, 23))
         );
 
@@ -147,6 +152,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
 
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        Archivo archivo = new Archivo();
+        archivo.crearArchivo();
+        
+        String nombre,correo,celular;
+        //Obtenemos los datos de las cajas de texto
+        nombre = cajaNombre.getText();
+        correo = cajaCorreo.getText();
+        celular = cajaCelular.getText();
+        
+        //Creamos un objeto persona 
+        Persona persona = new Persona(nombre,correo,celular);
+        
+        //Escribimos los datos de la persona en el archivo.txt
+        archivo.escribirTexto(persona);
+        
+        cajaNombre.setText("");
+        cajaCorreo.setText("");
+        cajaCelular.setText("");
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -184,10 +210,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JButton botonGuardar;
     private javax.swing.JTextField cajaCelular;
     private javax.swing.JTextField cajaCorreo;
     private javax.swing.JTextField cajaNombre;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

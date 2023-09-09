@@ -14,5 +14,18 @@ public class Persona {
         this.correo = correo;
         this.celular = celular;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+    
     
 }
